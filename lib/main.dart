@@ -3,11 +3,13 @@ import 'package:get/get.dart';
 import 'package:getx_practice/Counter%20app%20with%20Getx/home_page.dart';
 import 'package:getx_practice/Doctor_List_View/View/doctor_list.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:getx_practice/Module/Products/Controller/cart_controller.dart';
+import 'package:getx_practice/Module/route/product_routes.dart';
 import 'Navigation and Routing/view/home_page.dart';
 import 'Theme Switcher App__Getbuilder/view/theme_page.dart';
 
 
-//counter app
+///counter app
 // void main() {
 //   runApp(const MyApp());
 // }
@@ -24,7 +26,7 @@ import 'Theme Switcher App__Getbuilder/view/theme_page.dart';
 //   }
 // }
 
-//theme_change with getbuilder
+///theme_change with getbuilder
 //void main() => runApp(ThemePage());
 
 //Navigation and Routing
@@ -35,21 +37,42 @@ import 'Theme Switcher App__Getbuilder/view/theme_page.dart';
 //   ));
 // }
 
-// Doctor list view
+/// Doctor list view
 
-Future<void> main() async {
-  await dotenv.load(fileName: ".env");
-  runApp(const MyApp());
+// Future<void> main() async {
+//   await dotenv.load(fileName: ".env");
+//   runApp(const MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return const GetMaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: DoctorList(),
+//     );
+//   }
+// }
+
+///product view
+
+void main(){
+  Get.put(CartController());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget{
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: DoctorList(),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false ,
+      title: 'Product app',
+      getPages: ProductRoutes.route,
+      initialRoute: '/product-view',
     );
   }
 }
