@@ -182,4 +182,6 @@ class Pagination {
     "size": size,
     "hasNext": hasNext,
   };
+  int get totalPages => (totalItems / size).ceil();
+  bool get canLoadMore => hasNext;
 }
